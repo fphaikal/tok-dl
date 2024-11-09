@@ -6,11 +6,19 @@ import Link from "next/link";
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 
+interface data {
+  cover: string,
+  title: string,
+  duration: string,
+  wmplay: string,
+  hdplay: string
+}
+
 export default function Home() {
   const [url, setUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState<data | null>(null);
 
   const handleResult = async () => {
     setLoading(true);
