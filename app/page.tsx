@@ -2,16 +2,25 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { Download } from "lucide-react";
+import { FaPlay, FaCommentDots, FaShareAlt } from "react-icons/fa";
 
 interface data {
-  cover: string,
+  ai_dynamic_cover: string,
   title: string,
   duration: string,
   wmplay: string,
-  hdplay: string
+  hdplay: string,
+  play_count: number,
+  share_count: number,
+  comment_count: number,
+  author: {
+    unique_id: string,
+    nickname: string,
+    avatar: string,
+  }
 }
 
 export default function Home() {
@@ -25,7 +34,7 @@ export default function Home() {
     setError("");
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}`, {
+      const response = await fetch(`/api/v1`, {
         method: "POST",
         body: JSON.stringify({ url, hd: 1 }),
       });
@@ -43,29 +52,71 @@ export default function Home() {
     setLoading(false);
   }
 
+  const handleDownload = async (videoUrl: string, title: string) => {
+    const response = await fetch(videoUrl);
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = title || 'video.mp4'; // You can customize the file name
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    window.URL.revokeObjectURL(url);
+  };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return (
+    <div className="flex flex-col mx-96 items-center justify-center h-screen gap-5">
+      <p>Loading...</p>
+    </div>
+  );
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="flex flex-col mx-96 items-center justify-center h-screen gap-5">
+    <div className="flex flex-col mx-10 2xl:mx-96 items-center justify-center min-h-screen gap-5">
       <div className="flex flex-col gap-3 w-full text-center">
-        <h1 className="text-3xl text-white">TikTok Video Downloader</h1>
+        <h1 className="text-3xl text-slate-950 font-bold">TikTok Video Downloader</h1>
         <Input type="text" placeholder="https://www.tiktok.com/..." onChange={e => setUrl(e.target.value)} />
-        <Button onClick={handleResult} className="w-full bg-red-500">Submit</Button>
+        <Button onClick={handleResult} className="w-full bg-primary">Submit</Button>
       </div>
       {result && (
-        <div className="flex bg-slate-700 p-10 rounded-xl w-full gap-10">
-          <Image src={result.cover} className="rounded-lg" alt={result.title} width={300} height={300} />
-          <div className="flex flex-col gap-3 text-white">
-            <p className="font-bold">{result.title}</p>
-            <p>{result.duration}</p>
+        <div className="flex flex-col 2xl:flex-row bg-slate-100 p-5 2xl:p-10 rounded-xl w-full gap-5 2xl:gap-10 items-center">
+          <div className="w-[300px] h-[300px] relative justify-center">
+            <Image
+              src={result.ai_dynamic_cover}
+              alt={result.title}
+              layout="fill"
+              objectFit="cover"
+              className="rounded-lg"
+            />
+          </div>
+          <div className="flex flex-col gap-3 text-slate-950 w-full 2xl:w-1/2 justify-center">
+            <p className="font-bold hover:text-primary duration-300">{result.title}</p>
+            <div className="flex gap-3">
+              <div className="flex items-center justify-center gap-2 hover:text-primary duration-300">
+                <FaPlay />
+                <p className="">{result.play_count}</p>
+              </div>
+              <span>|</span>
+              <div className="flex items-center justify-center gap-2 hover:text-primary duration-300">
+                <FaCommentDots />
+                <p className="hover:text-primary duration-300">{result.comment_count}</p>
+              </div>
+              <span>|</span>
+              <div className="flex items-center justify-center gap-2 hover:text-primary duration-300">
+                <FaShareAlt />
+                <p className="hover:text-primary duration-300">{result.share_count}</p>
+              </div>
+            </div>
 
-            <Button>
-              <Link href={result.wmplay}>Download Video</Link>
+            <Button onClick={() => handleDownload(result.wmplay, result.title)} className="flex justify-center items-center w-full bg-slate-950 hover:bg-primary duration-300">
+              <Download size={24} />
+              Download Video
             </Button>
-            <Button>
-              <Link href={result.hdplay}>Download Video HD</Link>
+
+            <Button onClick={() => handleDownload(result.hdplay, result.title + ' HD')} className="flex justify-center items-center w-full bg-slate-950 hover:bg-primary duration-300">
+              <Download size={24} />
+              Download Video HD
             </Button>
           </div>
         </div>
