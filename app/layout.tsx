@@ -6,7 +6,7 @@ import Navbar from "@/components/navbar";
 const poppins = Poppins({ weight: '400', subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "TokDownload",
+  title: "TokDL",
   description: "Tiktok HD Video Downloader",
 };
 
@@ -26,7 +26,7 @@ export default function RootLayout({
         <footer className="bg-white dark:bg-gray-900">
           <div className="max-w-screen-xl mx-auto p-4 text-sm text-gray-600 dark:text-gray-400">
             <p className="text-center">
-              &copy; 2021 TokDL. All rights reserved.
+              &copy; 2024 TokDL. All rights reserved.
             </p>
           </div>
         </footer>

@@ -58,7 +58,7 @@ export default function Home() {
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = title || 'video.mp4'; // You can customize the file name
+    a.download = `[TokDL] ${title}` || 'video.mp4'; // You can customize the file name
     document.body.appendChild(a);
     a.click();
     a.remove();
@@ -66,7 +66,7 @@ export default function Home() {
   };
 
   if (loading) return (
-    <div className="flex flex-col mx-96 items-center justify-center h-screen gap-5">
+    <div className="flex flex-col mx-10 2xl:mx-96 items-center justify-center min-h-screen gap-5">
       <p>Loading...</p>
     </div>
   );
