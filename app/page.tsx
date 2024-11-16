@@ -73,7 +73,7 @@ export default function Home() {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="flex flex-col mx-10 2xl:mx-96 items-center justify-center min-h-screen gap-5">
+    <div className="flex flex-col mx-10 my-10 2xl:mx-96 items-center justify-center min-h-screen gap-5">
       <div className="flex flex-col gap-3 w-full text-center">
         <h1 className="text-3xl text-slate-950 font-bold">TikTok Video Downloader</h1>
         <Input type="text" placeholder="https://www.tiktok.com/..." onChange={e => setUrl(e.target.value)} />
@@ -81,14 +81,26 @@ export default function Home() {
       </div>
       {result && (
         <div className="flex flex-col 2xl:flex-row bg-slate-100 p-5 2xl:p-10 rounded-xl w-full gap-5 2xl:gap-10 items-center">
-          <div className="w-[300px] h-[300px] relative justify-center">
-            <Image
-              src={result.ai_dynamic_cover}
-              alt={result.title}
-              layout="fill"
-              objectFit="cover"
-              className="rounded-lg"
-            />
+          <div className="flex flex-col gap-5">
+            <div className="w-[300px] h-[300px] relative">
+              <Image
+                src={result.ai_dynamic_cover}
+                alt={result.title}
+                layout="fill"
+                objectFit="cover"
+                className="rounded-lg"
+              />
+            </div>
+            <div className="flex gap-3 items-center justify-center bg-slate-200 p-3 rounded-xl">
+              <Image src={result.author.avatar} className="rounded-full" alt={result.author.nickname} width={50} height={50} />
+              <div className="flex items-center justify-center gap-2 hover:text-primary duration-300">
+                <p className="">{result.author.nickname}</p>
+              </div>
+              <span>|</span>
+              <div className="flex items-center justify-center gap-2 hover:text-primary duration-300">
+                <p className="hover:text-primary duration-300">{result.author.unique_id}</p>
+              </div>
+            </div>
           </div>
           <div className="flex flex-col gap-3 text-slate-950 w-full 2xl:w-1/2 justify-center">
             <p className="font-bold hover:text-primary duration-300">{result.title}</p>
