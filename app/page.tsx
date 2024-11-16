@@ -58,7 +58,7 @@ export default function Home() {
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `[TokDL] ${title}` || 'video.mp4'; // You can customize the file name
+    a.download = `[TokDL] ${title}.mp4` || 'video.mp4'; // You can customize the file name
     document.body.appendChild(a);
     a.click();
     a.remove();
