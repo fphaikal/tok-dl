@@ -46,14 +46,25 @@ export default function Result() {
         </div>
       </div>
       <div className="flex bg-slate-100 p-10 rounded-xl w-full gap-10">
-        <div className="w-[300px] h-[300px] relative">
-          <Image
-            src={result.ai_dynamic_cover}
-            alt={result.title}
-            layout="fill"
-            objectFit="cover"
-            className="rounded-lg"
-          />
+        <div className="flex flex-col">
+          <div className="w-[300px] h-[300px] relative">
+            <Image
+              src={result.ai_dynamic_cover}
+              alt={result.title}
+              layout="fill"
+              objectFit="cover"
+              className="rounded-lg"
+            />
+          </div>
+          <div className="flex gap-3">
+            <div className="flex items-center justify-center gap-2 hover:text-primary duration-300">
+              <p className="">{result.author.nickname}</p>
+            </div>
+            <span>|</span> 
+            <div className="flex items-center justify-center gap-2 hover:text-primary duration-300">
+              <p className="hover:text-primary duration-300">{result.author.unique_id}</p>
+            </div>
+          </div>
         </div>
         <div className="flex flex-col gap-3 text-slate-950">
           <p className="font-bold hover:text-primary duration-300">{result.title}</p>
