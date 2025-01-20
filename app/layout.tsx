@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google"
 import "./globals.css";
 import Navbar from "@/components/navbar";
+import Head from "next/head";
 
 const poppins = Poppins({ weight: '400', subsets: ["latin"] });
 
@@ -17,6 +18,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5378094744483048"
+          crossOrigin="anonymous"
+        ></script>
+      </Head>
       <body
         className={`${poppins.className} antialiased`}
       >
