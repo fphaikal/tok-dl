@@ -1,21 +1,29 @@
 'use client'
 
 import Link from 'next/link'
+import { FiDownload } from 'react-icons/fi'
 
 export default function Navbar() {
   return (
-    <nav className="w-full bg-white border-gray-200 dark:bg-gray-900">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <span className="self-center text-2xl font-bold whitespace-nowrap dark:text-white">Tok<span className="text-primary">DL</span> </span>
+    <nav className="sticky top-0 z-50 backdrop-blur-lg bg-white/70 border-b border-white/20 shadow-sm">
+      <div className="container-responsive flex items-center justify-between py-4">
+        <Link href="/" className="flex items-center space-x-2 group">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-md group-hover:shadow-blue-300/30 transition-all">
+            <FiDownload className="text-white text-xl" />
+          </div>
+          <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-400">
+            Tok<span className="text-blue-500">DL</span>
+          </span>
         </Link>
-        {/* <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-              <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                <li>
-                  <a href="#" className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Home</a>
-                </li>
-              </ul>
-            </div> */}
+        
+        <div className="hidden md:flex space-x-1">
+          <Link href="/" className="px-4 py-2 rounded-lg hover:bg-blue-50/50 text-blue-900/80 transition-all">
+            Home
+          </Link>
+          <Link href="/about" className="px-4 py-2 rounded-lg hover:bg-blue-50/50 text-blue-900/80 transition-all">
+            About
+          </Link>
+        </div>
       </div>
     </nav>
   )
