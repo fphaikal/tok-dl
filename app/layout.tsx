@@ -3,12 +3,70 @@ import { Poppins } from "next/font/google"
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Head from "next/head";
+import Script from "next/script";
 
 const poppins = Poppins({ weight: '400', subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "TokDL",
-  description: "Tiktok HD Video Downloader",
+  metadataBase: new URL('https://tokdl.vercel.app'),
+  title: "TokDL - TikTok Video Downloader HD | Download TikTok Videos Free",
+  description: "Download TikTok videos in HD quality for free. Fast, safe, and easy TikTok video downloader without watermark. Save TikTok videos instantly to your device.",
+  keywords: [
+    "TikTok downloader",
+    "download TikTok video",
+    "TikTok video downloader HD",
+    "free TikTok downloader",
+    "TikTok no watermark",
+    "save TikTok video",
+    "TikTok MP4 download",
+    "TikTok video saver",
+    "download video TikTok",
+    "TikTok downloader online"
+  ],
+  authors: [{ name: "TokDL Team" }],
+  creator: "TokDL",
+  publisher: "TokDL",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://tokdl.vercel.app',
+    siteName: 'TokDL - TikTok Video Downloader',
+    title: 'TokDL - Download TikTok Videos in HD Quality Free',
+    description: 'Fast and free TikTok video downloader. Download TikTok videos in HD quality without watermark. Safe, secure, and easy to use.',
+    images: [
+      {
+        url: '/og-image.svg',
+        width: 1200,
+        height: 630,
+        alt: 'TokDL - TikTok Video Downloader',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'TokDL - Download TikTok Videos HD Free',
+    description: 'Fast and free TikTok video downloader. Download videos in HD quality without watermark.',
+    images: ['/og-image.svg'],
+    creator: '@tokdl',
+  },
+  alternates: {
+    canonical: 'https://tokdl.vercel.app',
+  },
+  verification: {
+    google: '4Xd2Ovxlgo5M1oEwPzz0CbHiP7-JozMr7kVZQ6t5_Es',
+  },
+  category: 'technology',
 };
 
 export default function RootLayout({
@@ -20,7 +78,55 @@ export default function RootLayout({
     <html lang="en">
       <Head>
         <meta name="google-adsense-account" content="ca-pub-5378094744483048" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/icon-192.png" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="TokDL" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="msapplication-TileColor" content="#3b82f6" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        
+        {/* Schema.org structured data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'TokDL - TikTok Video Downloader',
+              url: 'https://tokdl.vercel.app',
+              description: 'Download TikTok videos in HD quality for free. Fast, safe, and easy TikTok video downloader without watermark.',
+              potentialAction: {
+                '@type': 'SearchAction',
+                target: 'https://tokdl.vercel.app/?q={search_term_string}',
+                'query-input': 'required name=search_term_string'
+              },
+              author: {
+                '@type': 'Organization',
+                name: 'TokDL Team'
+              }
+            })
+          }}
+        />
       </Head>
+      
+      {/* Google Analytics */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-XXXXXXXXXX', {
+            page_path: window.location.pathname,
+          });
+        `}
+      </Script>
       <body
         className={`${poppins.className} antialiased`}
       >

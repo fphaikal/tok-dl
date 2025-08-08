@@ -1,0 +1,15 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="630" fill="url(#paint0_linear_0_1)"/>
+<circle cx="600" cy="315" r="80" fill="white" fill-opacity="0.1"/>
+<circle cx="600" cy="315" r="60" fill="white" fill-opacity="0.2"/>
+<path d="M570 285L630 315L570 345V285Z" fill="white"/>
+<text x="600" y="400" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white">TokDL</text>
+<text x="600" y="440" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="white" opacity="0.9">TikTok Video Downloader HD</text>
+<text x="600" y="480" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="white" opacity="0.7">Fast • Free • No Watermark • HD Quality</text>
+<defs>
+<linearGradient id="paint0_linear_0_1" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+<stop stop-color="#3B82F6"/>
+<stop offset="1" stop-color="#1E40AF"/>
+</linearGradient>
+</defs>
+</svg>
