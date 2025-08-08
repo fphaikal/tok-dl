@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Image from "next/image";
 import TikTokImage from "@/components/TikTokImage";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";

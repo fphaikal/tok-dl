@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useRef, useEffect } from "react";
-import Image from "next/image";
 import TikTokImage from "@/components/TikTokImage";
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
