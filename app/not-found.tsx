@@ -21,15 +21,15 @@ export default function NotFound() {
             <span className="inline-block animate-bounce mx-2">0</span>
             4
           </div>
-          <div className="w-32 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
+          <div className="w-32 h-1 bg-linear-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
         </div>
-        
+
         <h1 className="text-2xl font-bold text-blue-900 mb-4">Page Not Found</h1>
         <p className="text-gray-600 mb-6">
-          Sorry, we couldn&apos;t find the page you&apos;re looking for. 
+          Sorry, we couldn&apos;t find the page you&apos;re looking for.
           The URL might be incorrect or the page may have been moved.
         </p>
-        
+
         {/* Action buttons */}
         <div className="space-y-3 mb-8">
           <Link href="/">
@@ -38,9 +38,9 @@ export default function NotFound() {
               Back to Home
             </Button>
           </Link>
-          
-          <Button 
-            variant="outline" 
+
+          <Button
+            variant="outline"
             onClick={handleGoBack}
             className="w-full border-blue-300 text-blue-600 hover:bg-blue-50 flex items-center justify-center gap-2"
           >
@@ -48,19 +48,19 @@ export default function NotFound() {
             Go Back
           </Button>
         </div>
-        
+
         {/* Helpful links */}
         <div className="border-t border-gray-200 pt-6">
           <p className="text-sm text-gray-500 mb-4">Looking for something specific?</p>
           <div className="space-y-2 text-sm">
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               className="block text-blue-600 hover:text-blue-800 transition-colors"
             >
               → Download TikTok Videos
             </Link>
-            <Link 
-              href="/api/v1" 
+            <Link
+              href="/api/v1"
               className="block text-blue-600 hover:text-blue-800 transition-colors"
             >
               → API Documentation
@@ -68,15 +68,15 @@ export default function NotFound() {
           </div>
         </div>
       </div>
-      
+
       {/* SEO Content */}
       <div className="max-w-2xl mt-12 text-center">
         <h2 className="text-xl font-semibold text-blue-900 mb-4">Continue Using TokDL</h2>
         <p className="text-gray-600 mb-6">
-          TokDL is the best free TikTok video downloader. Download any TikTok video in HD quality 
+          TokDL is the best free TikTok video downloader. Download any TikTok video in HD quality
           without watermarks. Fast, secure, and completely free to use.
         </p>
-        
+
         <div className="grid md:grid-cols-3 gap-4 text-sm">
           <div className="backdrop-blur-sm bg-white/30 p-4 rounded-lg">
             <h3 className="font-semibold text-blue-800 mb-2">HD Quality</h3>
