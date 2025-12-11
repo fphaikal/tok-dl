@@ -77,7 +77,9 @@ export default function TikTokDownloader() {
     setDownloadProgress({ isDownloading: true, progress: 0, fileName });
 
     try {
-      const response = await fetch(videoUrl);
+      // Use proxy API to bypass CORS restrictions
+      const proxyUrl = `/api/download?url=${encodeURIComponent(videoUrl)}`;
+      const response = await fetch(proxyUrl);
       if (!response.ok) throw new Error('Network response was not ok');
 
       const contentLength = response.headers.get('content-length');

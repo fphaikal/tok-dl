@@ -88,7 +88,7 @@ export default function Result() {
       }
 
       // Create blob and download
-      const blob = new Blob(chunks);
+      const blob = new Blob(chunks.map(chunk => chunk.slice().buffer));
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
